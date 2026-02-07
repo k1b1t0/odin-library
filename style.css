@@ -14,3 +14,20 @@
     border: 1px solid black;
     padding: 1rem;
 }
+
+.add-button {
+    font-size: xx-large;
+    font-family: monospace;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    border: none;
+    padding: 5px;
+    display: block;
+    margin: 0 auto;
+}
+
+.add-button:hover {
+    color: black;
+    background-color: white;
+}
