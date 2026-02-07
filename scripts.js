@@ -1,4 +1,6 @@
-function book(title, author, pages, read) {
+const myLibrary = [] 
+
+function Book(title, author, pages, read) {
     if (!new.target) {
         throw Error("need 'use' operator")
     }
@@ -6,13 +8,34 @@ function book(title, author, pages, read) {
     this.author = author
     this.pages = pages
     this.read = read
-    this.info = function() {
-        if (this.read) {
-            return `${this.title} by ${this.author}, ${this.pages} pages, read`
-        }
-        return `${this.title} by ${this.author}, ${this.pages} pages, not read yet`
+}
+
+Book.prototype.setId = function() {
+    this.id = crypto.randomUUID()
+}
+
+Book.prototype.info = function() {
+    if (this.read) {
+        return `${this.id}: ${this.title} by ${this.author}, ${this.pages} pages, read`
+    }
+    return `${this.id}: ${this.title} by ${this.author}, ${this.pages} pages, not read yet`
+}
+
+function addBookToLibrary(title, author, pages, read) {
+    const book = new Book(title, author, pages, read)
+    book.setId()
+    myLibrary.push(book)
+}
+
+function displayAllBooks() {
+    for (book of myLibrary) {
+        console.log(book.info())
     }
 }
 
-const theHobbit = new book("The Hobbit", "J.R.R. Tolkien", 295, false)
-console.log(theHobbit.info())
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false)
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false)
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false)
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false)
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false)
+displayAllBooks()
