@@ -1,0 +1,16 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.shelf {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin: 15px;
+}
+
+.card {
+    border: 1px solid black;
+    padding: 1rem;
+}
