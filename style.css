@@ -80,3 +80,7 @@ dialog::backdrop {
     background-color: pink;
     color: red;
 }
+
+.add-book-form > input:user-invalid {
+    border: 1px solid red;
+}

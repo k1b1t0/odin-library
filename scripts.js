@@ -113,8 +113,39 @@ addBtn.addEventListener('click', () => {
     dialog.showModal()
 })
 
+const titleInput = document.querySelector('#title')
+const authorInput = document.querySelector('#author')
+const pagesInput = document.querySelector('#pages')
+const errorMessage = document.querySelector('#error-message')
+
+function validatePages() {
+    if (pagesInput.validity.valid) {
+        errorMessage.textContent = ''
+    } else {
+        if (pagesInput.validity.valueMissing) {
+            errorMessage.textContent = 'Please input pages'
+        } else if (pagesInput.validity.rangeUnderflow) {
+            errorMessage.textContent = 'Pages must be a positive integer'
+        }
+    }
+}
+
+pagesInput.addEventListener('input', validatePages)
+authorInput.addEventListener('input', () => {
+    if (authorInput.validity.valueMissing) {
+        authorInput.setCustomValidity("Need author name")
+    } else {
+        authorInput.setCustomValidity("")
+    }
+})
+
 form.addEventListener('submit', (e) => {
     e.preventDefault()
+    if (!form.reportValidity()) {
+        validatePages()
+        return
+    }
+    
 
     const formData = new FormData(e.target)
     const data = Object.fromEntries(formData)
