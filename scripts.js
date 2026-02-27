@@ -3,16 +3,15 @@ const shelf = document.querySelector('.shelf')
 const dialog = document.querySelector('dialog')
 const dialogCloseBtn = document.querySelector('.close-button')
 const form = document.querySelector('form')
-const myLibrary = [] 
+const myLibrary = []
 
-function Book(title, author, pages, read) {
-    if (!new.target) {
-        throw Error("need 'use' operator")
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.read = read
     }
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
 }
 
 Book.prototype.setId = function() {
@@ -60,15 +59,20 @@ function createCard(current) {
     }
     card.appendChild(read)
 
+    const btnDiv = document.createElement('div')
+    btnDiv.classList.add('btns')
+
     const delBtn = document.createElement('button')
     delBtn.classList.add('delete')
     delBtn.textContent = 'delete'
-    card.appendChild(delBtn)
+    btnDiv.appendChild(delBtn)
 
     const readBtn = document.createElement('button')
     readBtn.classList.add('read')
     readBtn.textContent = 'read'
-    card.appendChild(readBtn)
+    btnDiv.appendChild(readBtn)
+
+    card.appendChild(btnDiv)
 
     card.dataset.index = current.id
     return card
@@ -127,7 +131,7 @@ dialogCloseBtn.addEventListener('click', () => {
 
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, true)
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, true)
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false)
+addBookToLibrary("The Hobbit", "J.R.R. sTolkien", 295, false)
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false)
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false)
 displayAllBooks()

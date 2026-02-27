@@ -3,6 +3,24 @@
     margin: 0;
 }
 
+dialog {
+    padding: auto;
+    margin: auto;
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.add-book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
 .shelf {
     display: flex;
     flex-direction: row;
@@ -30,4 +48,35 @@
 .add-button:hover {
     color: black;
     background-color: white;
+}
+
+.btns {
+    display: flex;
+    gap: 2ch;
+}
+
+.read, .delete {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+.read {
+    background-color: green;
+    color: yellow;
+}
+
+.delete {
+    background-color: red;
+    color: white;
+}
+
+.read:hover {
+    background-color: yellow;
+    color: green;
+}
+
+.delete:hover {
+    background-color: pink;
+    color: red;
 }
